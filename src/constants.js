@@ -1,0 +1,1 @@
+export const STATIONS_API = "https://environment.data.gov.uk/flood-monitoring/id/stations";
