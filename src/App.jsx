@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { READINGS_API } from "./constants";
 import "./App.css";
 import StationSelectorDropdown from "./components/StationSelectorDropdown";
+import ReadingsChart from "./components/ReadingChart";
 
 function App() {
   const [readings, setReadings] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const fetchReadings = async (stationId) => {
+  const fetchReadings = useCallback(async (stationId) => {
+    if (!stationId) return;
     setLoading(true);
     try {
       const now = new Date();
@@ -27,10 +29,17 @@ function App() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
   return (
     <>
       <StationSelectorDropdown onSelectStation={fetchReadings} />
+      {loading && <p>Loading readings...</p>}
+      {readings.length > 0 && (
+        <>
+          <h2>Readings Over the Last 24 Hours</h2>
+          <ReadingsChart readings={readings} />
+        </>
+      )}
     </>
   );
 }

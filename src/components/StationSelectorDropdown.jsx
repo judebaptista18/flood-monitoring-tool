@@ -6,21 +6,20 @@ const StationSelectorDropdown = ({ onSelectStation }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const fetchStations = async () => {
+        try {
+          const result = await fetch(STATIONS_API);
+          const data = await result.json();
+          console.log(data);
+          setStations(data.items);
+        } catch (error) {
+          console.error("Error fetching stations:", error);
+        } finally {
+          setLoading(false);
+        }
+      };
     fetchStations();
   }, []);
-
-  const fetchStations = async () => {
-    try {
-      const result = await fetch(STATIONS_API);
-      const data = await result.json();
-      console.log(data);
-      setStations(data.items);
-    } catch (error) {
-      console.error("Error fetching stations:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <div>
