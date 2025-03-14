@@ -12,10 +12,11 @@ const ReadingsChart = ({ readings }) => {
     if (readings.length > 0) {
       const ctx = chartRef.current.getContext("2d");
       chartInstance.current = new Chart(ctx, {
+        responsive: true,
         type: "line",
         data: {
           labels: readings.map((reading) =>
-            new Date(reading.dateTime).toLocaleTimeString()
+            new Date(reading.dateTime).formatDateTime()
           ),
           datasets: [
             {
@@ -42,6 +43,15 @@ const ReadingsChart = ({ readings }) => {
               },
             },
           },
+          plugins: {
+            legend: {
+                labels: {
+                    font: {
+                        size: 16
+                    }
+                }
+            }
+        }
         },
       });
     }
@@ -53,7 +63,14 @@ const ReadingsChart = ({ readings }) => {
     };
   }, [readings]);
 
-  return <canvas ref={chartRef} />;
+  return (
+    <div
+      className="chart-container"
+      id="line-graph"
+    >
+      <canvas ref={chartRef} />
+    </div>
+  );
 };
 
-export default ReadingsChart;
+export default React.memo(ReadingsChart);

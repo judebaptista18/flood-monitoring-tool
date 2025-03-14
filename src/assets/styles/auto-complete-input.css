@@ -1,0 +1,27 @@
+/* Autocomplete search */
+.search-container {
+    position: relative;
+    display: inline-block;
+    width: 300px; 
+  }
+  .search-input:focus {
+    border-color: var( --main-bg-color); 
+  }
+  .search-input {
+    width: 200px;
+    padding: 10px 40px 10px 10px; 
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  .search-icon {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 1px solid #888;
+    padding-left: 7px;
+  }
+  
