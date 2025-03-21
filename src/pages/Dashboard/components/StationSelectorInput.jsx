@@ -1,8 +1,8 @@
 import React, { useCallback, useState, useRef } from "react";
 
-import AutoCompleteInput from "../components/AutoCompleteInput";
-import { STATIONS_API } from "../constants";
-import { debounce, capitalizeWords } from "../utils";
+import AutoCompleteInput from "../../../components/AutoCompleteInput";
+import { STATIONS_API } from "../../../constants";
+import { debounce, capitalizeWords } from "../../../utils";
 
 const StationSelectorDropdown = ({ onSelectStation }) => {
   const [searchItem, setSearchItem] = useState("");
