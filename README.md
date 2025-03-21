@@ -10,7 +10,7 @@ The Flood Monitoring Tool is a website that enables users to search for and view
 
 **Client:** React, CSS, Chart.js, Vite
 
-**Server:** Real Time flood-monitoring API
+**Server:** Real Time flood-monitoring API, Vercel
 
 
 ## Run Locally
